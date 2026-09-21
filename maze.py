@@ -19,11 +19,13 @@ def get_neighbours():
 			result[d] = target
 	return result
 	
-def run():
+def start():
 	count = get_substance_count()
 	plant(Entities.Bush)
 	use_item(Items.Weird_Substance, count)
-	
+    run()
+
+def run():
 	dest = measure()
 	pos = (get_pos_x(), get_pos_y())
 	visited = {pos}

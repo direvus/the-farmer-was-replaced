@@ -11,10 +11,17 @@ def water(target):
 		use_item(Items.Water)
 		
 def do_harvest():
+    # If there's something to harvest at the current location, harvest it.
 	if can_harvest():
 		harvest()
 		
 def do_plant(entity, ground):
+    # Opportunistically harvest and then ensure the entity is planted.
+    #
+    # If there is something to harvest at the current location, first harvest
+    # it.  Then, ensure that the ground type is correct for the desired
+    # planting (till the ground if it isn't correct). Finally, plant the
+    # desired entity if it's not already present.
 	do_harvest()
 	if get_ground_type() != ground:
 		till()
@@ -37,3 +44,7 @@ def apply_vector(position, direction):
 	x, y = position
 	dx, dy = VECTORS[direction]
 	return (x + dx, y + dy)
+
+def get_rows():
+    # Return the number of rows to be covered by each drone
+    return get_world_size() // max_drones()
