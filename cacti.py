@@ -29,9 +29,10 @@ def run_drone(rows, cols):
 	util.go_to(start_x, start_y)
 	
 	swapped = True
+	max_row = rows
 	while swapped:
 		swapped = False
-		for y in range(rows):
+		for y in range(max_row):
 			for x in range(cols):
 				size = measure()
 				n = get_neighbours(start_x, start_y, rows, cols)
@@ -40,6 +41,7 @@ def run_drone(rows, cols):
 					if other < size:
 						swap(d)
 						swapped = True
+						max_row = y + 1
 						break
 				if x < cols - 1:
 					move(East)
