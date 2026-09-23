@@ -55,7 +55,7 @@ def apply_vector(position, direction):
 
 
 def get_pos():
-    return (get_pos_x(), get_pos_y())
+	return (get_pos_x(), get_pos_y())
 
 
 def get_rows():
@@ -76,10 +76,10 @@ def go_to(x, y):
 		direction = East
 	else:
 		direction = West
-    count = abs(dx)
-    if count > SIZE // 2:
-        direction = reverse(direction)
-        count = SIZE - count
+	count = abs(dx)
+	if count > SIZE // 2:
+		direction = reverse(direction)
+		count = SIZE - count
 	for _ in range(count):
 		move(direction)
 
@@ -87,10 +87,10 @@ def go_to(x, y):
 		direction = North
 	else:
 		direction = South
-    count = abs(dy)
-    if count > SIZE // 2:
-        direction = reverse(direction)
-        count = SIZE - count
+	count = abs(dy)
+	if count > SIZE // 2:
+		direction = reverse(direction)
+		count = SIZE - count
 	for _ in range(count):
 		move(direction)
 
