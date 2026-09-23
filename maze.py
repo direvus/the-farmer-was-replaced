@@ -20,8 +20,8 @@ def get_neighbours():
 	return result
 	
 def run_drone(size, row):
-    util.go_to(0, row)
-    start(size)
+	util.go_to(0, row)
+	start(size)
 
 def start(size):
 	count = get_substance_count(size)
@@ -49,26 +49,26 @@ def advance(direction, visited):
 	return True
 	
 def dist_key(item):
-    return item[2]
+	return item[2]
 
 def explore(visited):
 	n = get_neighbours()
-    targets = []
-    dest = measure()
-    if dest == None:
-        return
-    for d in n:
-        pos = n[d]
+	targets = []
+	dest = measure()
+	if dest == None:
+		return
+	for d in n:
+		pos = n[d]
 		if pos in visited:
 			continue
-        dist = util.get_distance(pos, dest)
-        targets.append((d, pos, dist))
-    util.sort(targets, dist_key)
+		dist = util.get_distance(pos, dest)
+		targets.append((d, pos, dist))
+	util.sort(targets, dist_key)
 
 	for target in targets:
 		if get_entity_type() != Entities.Hedge:
 			return
-        direction = target[0]
+		direction = target[0]
 		moved = advance(direction, visited)
 		if moved:
 			move(util.reverse(direction))
