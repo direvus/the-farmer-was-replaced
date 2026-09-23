@@ -56,14 +56,14 @@ def run_cell():
 	move(East)
 
 
-def run_drone(rows):
-	start = get_pos_y()
+def run_drone(rows, cols):
+	start_x = get_pos_x()
+	start_y = get_pos_y()
 	for y in range(rows):
-        for x in range(SIZE):
+        for x in range(cols):
             run_cell()
-		move(North)
-	while get_pos_y() != start:
-		move(South)
+        util.go_to(start_x, get_pos_y() + 1)
+    util.go_to(start_x, start_y)
 
 
 def run():

@@ -31,7 +31,6 @@ def start(size):
 	run()
 
 def run():
-	dest = measure()
 	pos = (get_pos_x(), get_pos_y())
 	visited = {pos}
 	explore(visited)
@@ -56,6 +55,8 @@ def explore(visited):
 	n = get_neighbours()
     targets = []
     dest = measure()
+    if dest == None:
+        return
     for d in n:
         pos = n[d]
 		if pos in visited:

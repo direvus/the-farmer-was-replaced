@@ -59,14 +59,16 @@ def go_to(x, y):
     dx = x - get_pos_x()
     dy = y - get_pos_y()
 
-    direction = East
-    if x < 0:
+    if dx > 0:
+        direction = East
+    else:
         direction = West
     for _ in range(abs(dx)):
         move(direction)
 
-    direction = North
-    if y < 0:
+    if dy > 0:
+        direction = North
+    else:
         direction = South
     for _ in range(abs(dy)):
         move(direction)

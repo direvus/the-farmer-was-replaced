@@ -25,7 +25,7 @@ def run_maze():
 
 def run_pumpkins():
     while True:
-        pumpkins.run_drone(6)
+        pumpkins.run_drone(6, 10)
 
 
 def main():
