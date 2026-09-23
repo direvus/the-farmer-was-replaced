@@ -1,4 +1,5 @@
 from __builtins__ import *
+import cacti
 import maze
 import pumpkins
 import tech
@@ -35,12 +36,19 @@ def run_sunflowers():
 		max_petals = sunflowers.run_drone(4, 6, flowers)
 
 
+def run_cacti():
+	while True:
+		cacti.run_drone(12, 6)
+
 def main():
 	clear()
 	spawn_drone(run_pumpkins)
 	util.go_to(10, 0)
 	spawn_drone(run_sunflowers)
+	
+	util.go_to(10, 4)
+	spawn_drone(run_cacti)
 	util.go_to(0, 6)
 	run_maze()
-
+	
 main()

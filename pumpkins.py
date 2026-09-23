@@ -18,7 +18,6 @@ def run_cell():
 			util.do_plant(Entities.Pumpkin, Grounds.Soil)
 	else:
 		basic.run_cell()
-	move(East)
 
 
 def run_drone(rows, cols):
@@ -27,7 +26,10 @@ def run_drone(rows, cols):
 	for y in range(rows):
 		for x in range(cols):
 			run_cell()
-		util.go_to(start_x, get_pos_y() + 1)
+			if x < cols - 1:
+				move(East)
+		if y < rows - 1:
+			util.go_to(start_x, get_pos_y() + 1)
 	util.go_to(start_x, start_y)
 
 
