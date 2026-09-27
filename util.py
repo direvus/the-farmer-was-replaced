@@ -108,3 +108,11 @@ def sort(items, key):
 				items[i] = b
 				items[i + 1] = a
 
+
+def is_affordable(entity):
+	costs = get_cost(entity)
+	for item in costs:
+		if num_items(item) < costs[item]:
+			return False
+	return True
+	

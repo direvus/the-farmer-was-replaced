@@ -1,5 +1,6 @@
 from __builtins__ import *
 import cacti
+import dinosaur
 import maze
 import pumpkins
 import tech
@@ -39,6 +40,11 @@ def run_sunflowers():
 def run_cacti():
 	while True:
 		cacti.run_drone(12, 6)
+		
+def run_dinosaur():
+	util.go_to(21, 0)
+	while True:
+		dinosaur.run_drone(16, 0, 22, 6)
 
 def main():
 	clear()
@@ -48,6 +54,7 @@ def main():
 	
 	util.go_to(10, 4)
 	spawn_drone(run_cacti)
+	spawn_drone(run_dinosaur)
 	util.go_to(0, 6)
 	run_maze()
 	
