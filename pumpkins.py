@@ -12,10 +12,10 @@ def run_cell():
 	y = get_pos_y()
 	if x < PUMPKIN_SIZE and y < PUMPKIN_SIZE:
 		if get_entity_type() != Entities.Pumpkin:
-			util.do_plant(Entities.Pumpkin, Grounds.Soil)
+			util.do_plant(Entities.Pumpkin)
 		util.water(0.6)
 		if (x == PUMPKIN_SIZE - 1 and y == PUMPKIN_SIZE - 1 and can_harvest()):
-			util.do_plant(Entities.Pumpkin, Grounds.Soil)
+			util.do_plant(Entities.Pumpkin)
 	else:
 		basic.run_cell()
 

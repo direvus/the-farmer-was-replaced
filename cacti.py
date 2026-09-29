@@ -20,7 +20,7 @@ def run_drone(rows, cols):
 	for y in range(rows):
 		for x in range(cols):
 			if get_entity_type() != Entities.Cactus:
-				util.do_plant(Entities.Cactus, Grounds.Soil)
+				util.do_plant(Entities.Cactus)
 			if x < cols - 1:
 				move(East)
 		if y < rows - 1:

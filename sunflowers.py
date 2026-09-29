@@ -13,7 +13,7 @@ def run_cell(flowers):
 	petals = measure()
 	p = util.get_pos()
 	if get_entity_type() != Entities.Sunflower:
-		util.do_plant(Entities.Sunflower, Grounds.Soil)
+		util.do_plant(Entities.Sunflower)
 		util.water(1.0)
 		petals = measure()
 		flowers[p] = petals

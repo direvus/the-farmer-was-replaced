@@ -8,9 +8,15 @@ VECTORS = {
 	East: (1, 0),
 	West: (-1, 0),
 	South: (0, -1)}
+REQUIRES_SOIL = {
+	Entities.Cactus,
+	Entities.Carrot,
+	Entities.Pumpkin,
+	Entities.Sunflower}
+	
 
 def water(target):
-	if get_water() < target and num_items(Items.Water) > 0:
+	while get_water() < target and num_items(Items.Water) > 0:
 		use_item(Items.Water)
 		
 
@@ -20,7 +26,7 @@ def do_harvest():
 		harvest()
 
 
-def do_plant(entity, ground):
+def do_plant(entity):
 	# Opportunistically harvest and then ensure the entity is planted.
 	#
 	# If there is something to harvest at the current location, first harvest
@@ -28,20 +34,20 @@ def do_plant(entity, ground):
 	# planting (till the ground if it isn't correct). Finally, plant the
 	# desired entity if it's not already present.
 	do_harvest()
-	if get_ground_type() != ground:
+	if entity in REQUIRES_SOIL and get_ground_type() != Grounds.Soil:
 		till()
 	if get_entity_type() != entity:
 		plant(entity)
 
 
-def fertilise(entity, ground):
-	do_plant(entity, ground)
+def fertilise(entity):
+	do_plant(entity)
 	if num_items(Items.Fertilizer) > 0:
 		use_item(Items.Fertilizer)
 		while not can_harvest():
 			do_a_flip()
 		harvest()
-		do_plant(entity, ground)
+		do_plant(entity)
 
 
 def reverse(direction):
@@ -72,6 +78,9 @@ def go_to(x, y):
 	dx = x - get_pos_x()
 	dy = y - get_pos_y()
 
+	if dx == 0 and dy == 0:
+		return
+
 	if dx > 0:
 		direction = East
 	else:
@@ -95,6 +104,10 @@ def go_to(x, y):
 		move(direction)
 
 
+def go_to_pos(position):
+	go_to(position[0], position[1])
+	
+	
 def sort(items, key):
 	clean = False
 	while not clean:
